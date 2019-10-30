@@ -1,27 +1,71 @@
 
 # Librerías
 import pandas as pd 
+import matplotlib.pyplot as plt
 
 
 
+# Lectura del archivo people.in
 
-#data = pd.read_csv("people.in") 
 data = []
 with open ("people.in", "r") as myfile:
     data.append(myfile.read())
 
-
-data2 = data[0].splitlines()
-
-df = pd.DataFrame(data2)
-
-
+# Parseo de los datos
+data = data[0].splitlines()
+df = pd.DataFrame(data)
 df[["PersonId", "Name", "LastName", "CurrentRole", "Country", "Industry", "NumberOfRecommendations",
 "NumberOfConnections"]] = df[0].str.split("|",expand=True,)
 
 df = df[["PersonId", "Name", "LastName", "CurrentRole", "Country", "Industry", "NumberOfRecommendations",
 "NumberOfConnections"]]
     
+# Visualizaciones
+
+# Pais
+
+paises = df["Country"].value_counts()
+df_paises = pd.DataFrame(paises)
+df_paises["Pais"] = df_paises.index
+labels = df_paises["Pais"]
+values = df_paises["Country"]
+
+fig1, ax1 = plt.subplots()
+ax1.pie(values, labels=labels, autopct='%1.1f%%',
+        shadow=True, startangle=90)
+ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+
+# Pisición
+
+pos = df["CurrentRole"].value_counts()
+df_pos = pd.DataFrame(pos)
+df_pos["Posición"] = df_pos.index
+labels = df_pos["Posición"]
+values = df_pos["CurrentRole"]
+
+fig1, ax1 = plt.subplots()
+ax1.pie(values, labels=labels, autopct='%1.1f%%',
+        shadow=True, startangle=90)
+ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+
+
+# Industria
+
+industria = df["Industry"].value_counts()
+df_ind= pd.DataFrame(industria)
+df_ind["Industria"] = df_ind.index
+labels = df_ind["Industria"]
+values = df_ind["Industry"]
+
+fig1, ax1 = plt.subplots()
+ax1.pie(values, labels=labels, autopct='%1.1f%%',
+        shadow=True, startangle=90)
+ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+
+
 #    # Selección de cajeros en CABA
 #    data_caba = data[data['localidad']== "CABA"]
 #    
