@@ -22,48 +22,76 @@ df = df[["PersonId", "Name", "LastName", "CurrentRole", "Country", "Industry", "
     
 # Visualizaciones
 
-# Pais
+## Pais
+#
+#paises = df["Country"].value_counts()
+#df_paises = pd.DataFrame(paises)
+#df_paises["Pais"] = df_paises.index
+#labels = df_paises["Pais"]
+#values = df_paises["Country"]
+#
+#fig1, ax1 = plt.subplots()
+#ax1.pie(values, labels=labels, autopct='%1.1f%%',
+#        shadow=True, startangle=90)
+#ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+#plt.show()
+#
+## Pisición
+#
+#pos = df["CurrentRole"].value_counts()
+#df_pos = pd.DataFrame(pos)
+#df_pos["Posición"] = df_pos.index
+#labels = df_pos["Posición"]
+#values = df_pos["CurrentRole"]
+#
+#fig1, ax1 = plt.subplots()
+#ax1.pie(values, labels=labels, autopct='%1.1f%%',
+#        shadow=True, startangle=90)
+#ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+#plt.show()
+#
+#
+## Industria
+#
+#industria = df["Industry"].value_counts()
+#df_ind= pd.DataFrame(industria)
+#df_ind["Industria"] = df_ind.index
+#labels = df_ind["Industria"]
+#values = df_ind["Industry"]
+#
+#fig1, ax1 = plt.subplots()
+#ax1.pie(values, labels=labels, autopct='%1.1f%%',
+#        shadow=True, startangle=90)
+#ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+#plt.show()
 
-paises = df["Country"].value_counts()
-df_paises = pd.DataFrame(paises)
-df_paises["Pais"] = df_paises.index
-labels = df_paises["Pais"]
-values = df_paises["Country"]
 
-fig1, ax1 = plt.subplots()
-ax1.pie(values, labels=labels, autopct='%1.1f%%',
-        shadow=True, startangle=90)
-ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-plt.show()
+# Industrias
 
-# Pisición
+#Banking & Financial ServicesCapital MarketsComputer GamesConsumer GoodsDesignElectrical/ Electronic ManufacturingEnergy, Resources & UtilitiesEntertainment & SportsGovernment
+#HealthcareHigh TechHuman ResourcesInformation Technology & ServicesInsuranceManufacturingMedia & Information ServicesPharmaceuticals and Biotech
+#PublishingReal Estate ServicesRetail & Consumer ProductsStaffing and RecruitingTelecomTextilesTolling & AutomationTravel, Transportation & Hospitality
 
-pos = df["CurrentRole"].value_counts()
-df_pos = pd.DataFrame(pos)
-df_pos["Posición"] = df_pos.index
-labels = df_pos["Posición"]
-values = df_pos["CurrentRole"]
+# Clientes
 
-fig1, ax1 = plt.subplots()
-ax1.pie(values, labels=labels, autopct='%1.1f%%',
-        shadow=True, startangle=90)
-ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-plt.show()
+# Product manager,  VP of engineering, SVP, Managing Director, Program manager, CTO, Business development, Director of architecture, VP Technology Services, CEO, Founder
+
+# Regla:
+# Filtrar por paises latinoamericanos, industrias y clientes. Luego ordenar de mayor a menor por numero de recomendaciones.
+# HAcer una correlación/dispersion entre numero de contactos y de recomendaciones.
 
 
-# Industria
 
-industria = df["Industry"].value_counts()
-df_ind= pd.DataFrame(industria)
-df_ind["Industria"] = df_ind.index
-labels = df_ind["Industria"]
-values = df_ind["Industry"]
+# Paises
 
-fig1, ax1 = plt.subplots()
-ax1.pie(values, labels=labels, autopct='%1.1f%%',
-        shadow=True, startangle=90)
-ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-plt.show()
+paises = ["Argentina","Bolivia","Brazil","Chile","Colombia","Ecuador","French Guiana", "Guyana","Paraguay","Peru","Suriname","Uruguay","Venezuela"]
+
+#df2 = df[]  
+
+#df["Country"] &in& paises
+
+df2 = df[df['Country'].isin(paises)]
+
 
 
 #    # Selección de cajeros en CABA
