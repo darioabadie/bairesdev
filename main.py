@@ -1,11 +1,13 @@
 
 # Librerías
 import pandas as pd 
+import os
+import sys
 
 def main():
     # Lectura del archivo people.in
     data = []
-    with open ("people.in", "r") as myfile:
+    with open (os.path.join(os.path.dirname(sys.argv[0]), "people.in"), "r") as myfile:
         data.append(myfile.read())
     
     # Parseo de los datos y ordenamiento en un dataframe
@@ -69,7 +71,7 @@ def main():
     df4 = df3[:100]
     
     # Almacenamiento de la lista de IDs de los clientes en un archivo
-    with open('people.out', 'w') as f:
+    with open(os.path.join(os.path.dirname(sys.argv[0]), "people.out"), 'w') as f:
         for item in df4["PersonId"]:
             f.write("%s\n" % item)
         
